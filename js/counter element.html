@@ -10,6 +10,11 @@
             text-align: center;
             margin-top: 50px;
         }
+        #counter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px;
+        }
         ul {
             list-style: none;
             padding: 0;
@@ -17,10 +22,15 @@
         li {
             font-size: 1.2rem;
             padding: 10px;
-            background: lightblue;
             margin: 5px;
             display: inline-block;
             border-radius: 5px;
+        }
+        .odd {
+            background-color: yellow;
+        }
+        .even {
+            background-color: red;
         }
         button {
             font-size: 1rem;
@@ -33,12 +43,14 @@
 <body>
 
     <h2>Counter List</h2>
+    <p>Current Count: <span id="counter">0</span></p>
     <button id="increment">➕ Increment</button>
     <button id="decrement">➖ Decrement</button>
     <ul id="list"></ul>
 
     <script>
         let count = 0;
+        const counterDisplay = document.getElementById("counter");
         const list = document.getElementById("list");
         const incrementButton = document.getElementById("increment");
         const decrementButton = document.getElementById("decrement");
@@ -48,7 +60,15 @@
             const li = document.createElement("li");
             li.innerHTML = `Item ${count}`;
             li.setAttribute("id", `item-${count}`);
+
+            // Apply styling based on odd/even
+            if (count % 2 === 0) {
+                li.classList.add("even");
+            } else {
+                li.classList.add("odd");
+            }
             list.appendChild(li);
+            counterDisplay.innerText = count; // Update counter display
         });
 
         decrementButton.addEventListener("click", function() {
@@ -56,8 +76,9 @@
                 let lastItem = document.getElementById(`item-${count}`);
                 if (lastItem) {
                     list.removeChild(lastItem);
+                    count--;
+                    counterDisplay.innerText = count; // Update counter display
                 }
-                count--;
             }
         });
     </script>
