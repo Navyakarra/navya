@@ -10,3 +10,5 @@ for(leti=onabort;i<10;i++)
     myfriends.push(i)
 }
 console.log(myfriends)
+
+

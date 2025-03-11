@@ -19,3 +19,6 @@ console.log("this person below 18")
     }
     }
     showtogetlicense(50,300,false)
+
+    const result=1 ===1
+    console.log(result)
