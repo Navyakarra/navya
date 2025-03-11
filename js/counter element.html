@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            font-size: 1.2rem;
+            padding: 10px;
+            background: lightblue;
+            margin: 5px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        button {
+            font-size: 1rem;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Counter List</h2>
+    <button id="increment">➕ Increment</button>
+    <button id="decrement">➖ Decrement</button>
+    <ul id="list"></ul>
+
+    <script>
+        let count = 0;
+        const list = document.getElementById("list");
+        const incrementButton = document.getElementById("increment");
+        const decrementButton = document.getElementById("decrement");
+
+        incrementButton.addEventListener("click", function() {
+            count++;
+            const li = document.createElement("li");
+            li.innerHTML = `Item ${count}`;
+            li.setAttribute("id", `item-${count}`);
+            list.appendChild(li);
+        });
+
+        decrementButton.addEventListener("click", function() {
+            if (count > 0) {
+                let lastItem = document.getElementById(`item-${count}`);
+                if (lastItem) {
+                    list.removeChild(lastItem);
+                }
+                count--;
+            }
+        });
+    </script>
+
+</body>
+</html>
