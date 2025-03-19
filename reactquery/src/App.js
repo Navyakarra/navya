@@ -1,23 +1,7 @@
-import React,{useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useQuery } from '@tanstack/react-query';
 
-function Button(){
-  const{data,error}=useQuery('hello-world',()=>{
-return new Promise(resolve=>{
-  setTimeout(()=>resolve(Math.random()),2000)
-})
-  })
-  console.log({data,error})
-  return <button >i am button{data}</button>
-}
- 
-  function App() {
-    const[visible,setVisible]=useState(true)
-    function toggleButton(){
-      setVisible(visible=>visible)
-    }
+function App() {
   return (
     <div className="App">
       <header className="App-header">
